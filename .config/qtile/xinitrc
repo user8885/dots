@@ -1,0 +1,12 @@
+xset s off
+xset -dpms
+xset s noblank
+
+xrandr -s 1920x1080 -r 100
+
+xinput --set-prop 'pointer:''Logitech Wireless Receiver Mouse' 'libinput Accel Profile Enabled' 0, 1
+xinput --set-prop 'pointer:''Logitech Wireless Receiver Mouse' 'libinput Accel Speed' -0.1
+
+setxkbmap -option "caps:swapescape"
+
+exec dbus-run-session -- qtile start

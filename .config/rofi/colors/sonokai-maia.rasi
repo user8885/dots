@@ -1,0 +1,24 @@
+/*******************************************************************************
+ * SONOKAI MAIA COLOR SCHEME FOR ROFI
+ * User                 : Me
+ * Theme Repo           : n/a
+ *******************************************************************************/
+
+* {
+  background: #273136;
+  background-transparent: #273136D9;
+  background-alt: #313B42;
+  foreground: #E1E2E3;
+  disabled: #55626D;
+
+  primary: #9CD57B;
+  secondary:   #78CEE9; 
+
+  c1: #F76C7C;
+  c2: #F3A96A;
+  c3: #E3D367;
+  c4: #9CD57B;
+  c5: #78CEE9;
+  c6: #BAA0F8;
+  c7: #82878B;
+}

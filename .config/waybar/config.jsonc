@@ -1,0 +1,26 @@
+// -*- mode: jsonc -*-
+{
+    "position": "bottom", // Waybar position (top|bottom|left|right)
+    "height": "20",
+
+    "include": [
+      "$HOME/.config/waybar/Modules.jsonc"
+    ],
+
+    // Choose the order of the modules
+    "modules-left": [
+      "hyprland/workspaces",
+      "custom/seperator",
+      "hyprland/window"
+    ],
+    "modules-center": [
+      "tray",
+    ],
+    "modules-right": [
+      "pulseaudio",
+      "custom/seperator",
+      "clock",
+      "custom/seperator",
+      "custom/swaync"
+    ]
+}

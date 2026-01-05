@@ -1,0 +1,13 @@
+(
+    state: Enabled,
+    acceleration: Some((
+        profile: Some(Flat),
+        speed: 0.17995898741337857,
+    )),
+    scroll_config: Some((
+        method: None,
+        natural_scroll: Some(true),
+        scroll_button: None,
+        scroll_factor: None,
+    )),
+)

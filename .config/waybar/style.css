@@ -1,0 +1,174 @@
+@import url("./colors/dracula.css");
+
+* {
+    font-family:   "NotoSansM Nerd Font Regular";
+    font-size:     14px;
+    box-shadow:    none;
+    text-shadow:   none;
+    transition-duration: 0s;
+    padding: 0 2px;
+}
+
+window#waybar {
+  background: @bg;
+  color: @fg;
+}
+
+/*
+* {
+    margin-top: 1px;
+}
+window#waybar {
+    background: transparent;
+}
+
+.modules-left {
+  margin-left: 5;
+  padding-right: 10px;
+  background: @bg;
+  border: 1px solid @pri;
+  border-radius: 13px;
+}
+.modules-center {
+  padding: 0 10px;
+  background: @bg;
+  border: 1px solid @pri;
+  border-radius: 13px;
+}
+.modules-right {
+  background: @bg;
+  border: 1px solid @pri;
+  border-radius: 13px;
+}
+*/
+
+.modules-right {
+  margin-right: 5;
+  padding: 0 10px;
+}
+
+#window {
+  color: @fg;
+}
+
+
+#workspaces {
+}
+
+#workspaces button {
+    color:      @fg;
+}
+
+#workspaces button.active {
+    color:      @pri;
+}
+
+#workspaces button:hover {
+    background: @bg-alt;
+    color: @pri;
+}
+
+#workspaces button.urgent {
+    color:      @c1;
+}
+
+/*
+#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight { 
+    margin:     0px 0px 0px 0px;
+    min-width:  25px;
+}
+*/
+
+#network {
+  color: @c4;
+}
+
+#clock {
+  color: @pri;
+  min-width:  140px;
+}
+
+#idle_inhibitor {
+  color: @c1;
+}
+
+#pulseaudio {
+  color: @sec;
+}
+
+#cpu {
+  border: 1px solid @pri;
+  border-radius: 10px;
+  color: @pri;
+}
+
+#memory {
+  color: @c4;
+  border: 1px solid @c4;
+  border-radius: 10px;
+}
+
+#disk{
+  color: @c6;
+  border: 1px solid @c6;
+  border-radius: 10px;
+}
+
+#temperature {
+  color: @c1;
+  border: 1px solid @c1;
+  border-radius: 10px;
+}
+
+#custom-logout {
+  color: @c1;
+  border: 1px solid @c1;
+  border-radius: 10px;
+}
+
+#custom-kernel {
+    color: @c1;
+}
+
+
+#custom-kill_window {
+  color: @c1;
+}
+
+#custom-rofi {
+  color: @c5;
+  font-size: 20px;
+  padding: 0 2px;
+}
+
+#custom-hyprversion {
+  color: @pri;
+  padding-left: 7px;
+}
+
+#custom-seperator {
+  color: @com;
+}
+
+#custom-updates {
+  color: @c7;
+  border: 1px solid @c7;
+  border-radius: 10px;
+}
+
+#tray {
+}
+
+#custom-swaync {
+  min-width: 20px;
+  color: @c1;
+}
+
+#custom-spotify {
+  color: @c4;
+}
+
+#custom-wttr {
+  padding-top: 5px;
+  color: @c3;
+}

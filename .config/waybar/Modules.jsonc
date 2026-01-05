@@ -1,0 +1,168 @@
+{
+
+ "hyprland/window" : {
+     "format": "- {}",
+     "icon": true,
+     "max-length": 50,
+ },
+
+ "sway/window" : {
+     "format": "- {}",
+     "icon": true,
+     "max-length": 50,
+ },
+
+ "niri/window" : {
+     "format": "- {}",
+     "icon": true,
+     "max-length": 50,
+ },
+
+ "idle_inhibitor": {
+     "format": "{icon}",
+     "format-icons": {
+         "activated": " ",
+         "deactivated": " "
+     }
+ },
+
+ "tray": {
+     "icon-size": 18,
+     "spacing": 10
+ },
+
+   "clock": {
+     "format": "󰥔  {:%a, %m-%d (%R)}",
+     "tooltip-format": "<tt><small>{calendar}</small></tt>",
+     "calendar": {
+         "mode"          : "month",
+         "mode-mon-col"  : 2,
+         "weeks-pos"     : "left",
+         "on-scroll"     : 1,
+         "on-click-right": "mode",
+         "format": {
+             "months":     "<span color='#BD93F9'><b>{}</b></span>",
+             "days":       "<span color='#F8F8F2'><b>{}</b></span>",
+             "weeks":      "<span color='#8BE9FD'><b>W{}</b></span>",
+             "weekdays":   "<span color='#F1FA8C'><b>{}</b></span>",
+             "today":      "<span color='#FF5555'><b><u>{}</u></b></span>"
+         }
+     }
+ },
+
+ "cpu": {
+     "format": "  {usage}%",
+     "tooltip": false
+ },
+
+ "memory": {
+     "format": "  {}%"
+ },
+
+ "temperature": {
+     "thermal-zone": 2,
+     "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+     "format": " {icon} {temperatureC}°C",
+     "format-icons": [""]
+ },
+
+ "network": {
+     // "interface": "wlp2*", // (Optional) To force the use of this interface
+     "format-wifi": "  {essid} ({signalStrength}%)",
+     "format-ethernet": " {ipaddr}/{cidr}",
+     "tooltip-format": " {ifname} via {gwaddr}",
+     "format-linked": " {ifname} (No IP)",
+     "format-disconnected": "⚠ Disconnected",
+     "format-alt": "{ifname}: {ipaddr}/{cidr}"
+ },
+
+ "pulseaudio": {
+     "scroll-step": 5, // %, can be a float
+     "format": "{icon}  {volume}%",
+     "format-bluetooth": "{volume}% ",
+     "format-bluetooth-muted": "󰖁 ",
+     "format-muted": "󰖁",
+     "format-source": " {volume}%",
+     "format-source-muted": "",
+     "format-icons": {
+         "headphone": "",
+         "hands-free": "",
+         "headset": "",
+         "phone": "",
+         "portable": "",
+         "car": "",
+         "default": ["", "", ""]
+     },
+     "on-click": "ghostty -e pulsemixer",
+     "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+ },
+
+ "disk": {
+   "format": "󱛟 {percentage_used}%"
+ },
+
+ "custom/kill_window": {
+   "format": " ❌ ",
+   "tooltip-format": "kill a window",
+   "on-click": "sleep 1 && hyprctl kill"
+ },
+
+ "custom/kernel": {
+     "format": " ❤️ {} ", // emoji invisible in editor dont know why??
+     "exec": "uname -r"
+ },
+
+ "custom/updates": {
+   "format": " Updates: {}",
+   "exec": "/usr/bin/bash -c -- checkupdates | wc -l",
+   "interval": 7200,
+   "on-click": "kitty -e 'paru'"
+ },
+
+ "custom/rofi": {
+   "tooltip": false,
+   "format": "󰸊",
+   "on-click": "~/.config/rofi/launcher"
+ },
+ 
+ "custom/logout": {
+   "format": " ⏻ ",
+   "tooltip-format": "Power Menu",
+   "on-click": "dm-logout"
+ },
+
+ "custom/seperator": {
+   "format": " | ",
+   "tooltip": false,
+ },
+
+ "custom/hyprversion": {
+   "exec": "Hyprland --version | awk 'NR<2 {print $1, $2}'"
+ },
+
+ "custom/swaync": {
+   "tooltip": false,
+   "exec": "~/.config/waybar/scripts/custom-swaync.sh",
+   "interval": 1,
+   "on-click": "swaync-client -t",
+   "on-click-right": "swaync-client -d"
+ },
+
+ "custom/spotify": {
+   "exec": "~/.config/waybar/scripts/custom-spotify.sh",
+   "interval": 1,
+   "return-type": "json",
+   "max-length": 40,
+   "on-click": "playerctl -p spotify play-pause",
+   "on-click-right": "playerctl -p spotify next",
+   "on-scroll-up": "playerctl -p spotify volume 0.05+",
+   "on-scroll-down": "playerctl -p spotify volume 0.05-"
+ },
+
+ "custom/wttr": {
+   "tooltip": false,
+   "exec": "curl -s 'wttr.in/Parkersburg?u&format=1'",
+   "on-click": "wttr-as-png.sh",
+   "interval": 1800,
+ }
+}
