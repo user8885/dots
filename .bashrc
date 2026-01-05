@@ -70,8 +70,8 @@ alias mk="rm config.h && make && sudo make install"
 alias config="/usr/bin/git --git-dir=$HOME/Downloads/git/dots --work-tree=$HOME"
 
 alias cp='cp -i'
-alias cpd='cp -r'
-alias rmd='rm -r'
+alias rm='rm -i'
+alias r='trash-put'
 
 
 if [ -z "${CONTAINER_ID}" ]; then
