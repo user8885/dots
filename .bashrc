@@ -5,8 +5,9 @@ fi
 addToPATH() {
    export PATH=$1:$PATH
 }
+
 addToPATH ~/.local/bin
-addToPATH ~/scripts/dm-scripts
+addToPATH ~/Downloads/git/scripts/dm-scripts
 
 # VI-Mode
 unset -f __main

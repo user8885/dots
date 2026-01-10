@@ -13,13 +13,18 @@ run() {
   fi
 }
 
+run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
+
 run picom
 run xwallpaper --zoom ~/.config/wallpaper
 
-run qbittorrent
+run mullvad-vpn
 run nm-applet
 run volumeicon
 run blueman-applet
-run /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 
+
+run qbittorrent
+run steam -silent
+run keepassxc
 
 exit
