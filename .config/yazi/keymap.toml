@@ -160,7 +160,7 @@ keymap = [
 	{ on = [ "g", "c", "w" ],       run = "cd ~/.config/waybar",          desc = "Go to the waybar config directory" },
 	{ on = [ "g", "c", "y" ],       run = "cd ~/.config/yazi",            desc = "Go to the yazi config directory" },
 
-	{ on = [ "g", "." ],            run = "cd ~/Downloads/git/dotfiles",  desc = "Go to the dotfiles directory" },
+	{ on = [ "g", "." ],            run = "cd ~/Downloads/git/dots",  desc = "Go to the dotfiles directory" },
 	{ on = [ "g", "d" ],            run = "cd ~/Downloads",               desc = "Go to the Downloads directory" },
 	{ on = [ "g", "p" ],            run = "cd ~/Pictures",                desc = "Go to the Pictures directory" },
 	{ on = [ "g", "P" ],            run = "cd ~/Projects",                desc = "Go to the Projects directory" },
