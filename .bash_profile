@@ -22,8 +22,8 @@ export MY_TERM='ghostty'
 export EDITOR='nvim'
 
 if [ "$(tty)" = "/dev/tty1" ]; then
-   pgrep Hyprland || start-hyprland
-   #pgrep niri || niri --session
+   #pgrep Hyprland || start-hyprland
+   pgrep niri || niri --session
    #pgrep awesome || startx ~/.config/awesome/xinitrc
 
    #pgrep bspwm || startx ~/.config/bspwm/xinitrc
