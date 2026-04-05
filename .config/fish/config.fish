@@ -9,6 +9,7 @@ set -gx XDG_CACHE_HOME $HOME/.cache
 
 set -gax XDG_DATA_DIRS /var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share # Just for flatpak
 
+set -gx _JAVA_OPTIONS -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 set -gx GTK2_RC_FILES $XDG_CONFIG_HOME/gtk-2.0/gtkrc
 set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
 set -gx HISTFILE $XDG_STATE_HOME/bash/history
@@ -19,6 +20,11 @@ set -gx EDITOR nvim
 set -g fish_greeting
 
 if status is-interactive
+
+    if test -d (brew --prefix)/share/fish/completions
+        set -p fish_complete_path (brew --prefix)/share/fish/completions
+    end
+
     # Commands to run in interactive sessions can go here
     set -g fish_key_bindings fish_vi_key_bindings
     zoxide init fish | source
