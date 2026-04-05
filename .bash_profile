@@ -13,7 +13,11 @@ export XDG_CACHE_HOME="$HOME/.cache"
 
 export XDG_DATA_DIRS=/var/lib/flatpak/exports/share:$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS # Just for flatpak
 
-export MY_TERM='konsole'
+export GTK2_RC_FILES="$XDG_CONFIG_HOME"/gtk-2.0/gtkrc
+export GNUPGHOME="$XDG_DATA_HOME"/gnupg
+export HISTFILE="${XDG_STATE_HOME}"/bash/history
+
+export MY_TERM='kitty'
 export EDITOR='nvim'
 
 #if [ "$(tty)" = "/dev/tty1" ]; then

@@ -7,7 +7,8 @@ addToPATH() {
 }
 
 addToPATH ~/.local/bin
-addToPATH ~/Downloads/git/scripts/dm-scripts
+addToPATH ~/scripts/dm-scripts
+addToPATH /home/linuxbrew/.linuxbrew/bin
 
 # VI-Mode
 unset -f __main

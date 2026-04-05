@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-#xwaylandvideobridge --qwindowtitle xwlvb &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-/usr/lib/xdg-desktop-portal-hyprland &
+xwaylandvideobridge --qwindowtitle xwlvb &
+/usr/libexec/xdg-desktop-portal-hyprland &
+/usr/libexec/polkit-mate-authentication-agent-1 &
 
 wlsunset.sh &
 
@@ -13,9 +13,9 @@ swayosd-server &
 
 sleep 2
 
+"/opt/Mullvad VPN/mullvad-vpn" &
 keepassxc &
-mullvad-vpn &
-qbittorrent &
 nm-applet &
 blueman-applet &
 steam -silent &
+i2prouter start &
