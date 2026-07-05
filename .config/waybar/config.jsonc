@@ -1,26 +1,216 @@
 // -*- mode: jsonc -*-
 {
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": "20",
 
-    "include": [
-      "$HOME/.config/waybar/Modules.jsonc"
-    ],
+//    "include": [
+//      "$HOME/.config/waybar/Modules.jsonc"
+//   ],
 
     // Choose the order of the modules
     "modules-left": [
-      "hyprland/workspaces",
-      "custom/seperator",
-      "hyprland/window"
+        "custom/swayversion",
+        "custom/seperator",
+        "sway/workspaces",
+        "custom/seperator",
+        "sway/window"
     ],
     "modules-center": [
-      "tray",
+        "tray"
     ],
     "modules-right": [
-      "pulseaudio",
-      "custom/seperator",
-      "clock",
-      "custom/seperator",
-      "custom/swaync"
-    ]
+        "custom/wttr",
+        "custom/seperator",
+        "custom/music",
+        "custom/seperator",
+        "pulseaudio",
+        "custom/seperator",
+        "clock",
+        "custom/seperator",
+        "custom/swaync"
+    ],
+
+    // "hyprland/workspaces" : {
+    //     "format": "󰇄 {name}"
+    // },
+
+    "hyprland/window" : {
+        "tooltip": false,
+        "format": "- {}",
+        "icon": true,
+        "max-length": 50
+    },
+
+    "sway/window" : {
+        "tooltip": false,
+        "format": "- {}",
+        "icon": true,
+        "max-length": 50
+    },
+
+    "niri/window" : {
+        "tooltip": false,
+        "format": "- {}",
+        "icon": true,
+        "max-length": 50
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": " ",
+            "deactivated": " "
+        }
+    },
+
+    "tray": {
+        "icon-size": 18,
+        "spacing": 10
+    },
+
+    "clock": {
+        "format": "󰥔 {:%a, %m-%d (%R)}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode"          : "month",
+            "mode-mon-col"  : 2,
+            "weeks-pos"     : "left",
+            "on-scroll"     : 1,
+            "on-click-right": "mode",
+            "format": {
+                "months":     "<span color='#BD93F9'><b>{}</b></span>",
+                "days":       "<span color='#F8F8F2'><b>{}</b></span>",
+                "weeks":      "<span color='#8BE9FD'><b>W{}</b></span>",
+                "weekdays":   "<span color='#F1FA8C'><b>{}</b></span>",
+                "today":      "<span color='#FF5555'><b><u>{}</u></b></span>"
+            }
+        }
+    },
+
+    "cpu": {
+        "format": "  {usage}%"
+    },
+
+    "memory": {
+        "format": "  {}%"
+    },
+
+    "temperature": {
+        "thermal-zone": 2,
+        "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "format": " {icon} {temperatureC}°C",
+        "format-icons": [""]
+    },
+
+    "network": {
+     // "interface": "wlp2*", // (Optional) To force the use of this interface
+     "format-wifi": "  {essid} ({signalStrength}%)",
+     "format-ethernet": " {ipaddr}/{cidr}",
+     "tooltip-format": " {ifname} via {gwaddr}",
+     "format-linked": " {ifname} (No IP)",
+     "format-disconnected": "⚠ Disconnected",
+     "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5, // %, can be a float
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{volume}% ",
+        "format-bluetooth-muted": "󰖁 ",
+        "format-muted": "󰖁",
+        "format-source": " {volume}%",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "on-click-right": "pamixer -t"
+    },
+
+    "disk": {
+        "format": "󱛟 {percentage_used}%"
+    },
+
+    "custom/kill_window": {
+        "format": " ❌ ",
+        "tooltip-format": "kill a window",
+        "on-click": "sleep 1 && hyprctl kill"
+    },
+
+    "custom/kernel": {
+        "format": " ❤️ {} ", // emoji invisible in editor dont know why??
+        "exec": "uname -r"
+    },
+
+    "custom/updates": {
+        "format": " Updates: {}",
+        "exec": "/usr/bin/bash -c -- checkupdates | wc -l",
+        "interval": 7200,
+        "on-click": "kitty -e 'paru'"
+    },
+
+    "custom/rofi": {
+        "tooltip": false,
+        "format": "󰸊",
+        "on-click": "rofi-wrapper"
+    },
+
+    "custom/logout": {
+        "format": " ⏻ ",
+        "tooltip-format": "Power Menu",
+        "on-click": "dm-logout"
+    },
+
+    "custom/seperator": {
+        "format": "|",
+        "tooltip": false
+    },
+
+    "custom/icon": {
+        "format": "",
+        "tooltip": false
+    },
+
+    "custom/hyprversion": {
+        "format": " {}",
+        "exec": "Hyprland --version | awk '/Tag/ {print $2}' | awk -F ','  '{ print $1 }'",
+        "tooltip": false
+    },
+
+    "custom/swayversion": {
+        "format": "󰨡 {}",
+        "exec": "sway --version | awk '{print $3}'",
+        "tooltip": false
+    },
+
+    "custom/swaync": {
+        "tooltip": false,
+        "exec": "~/.config/waybar/scripts/custom-swaync",
+        "interval": 1,
+        "on-click": "swaync-client -t",
+        "on-click-right": "swaync-client -d"
+    },
+
+    "custom/wttr": {
+        "tooltip": false,
+        "exec": "curl -s 'wttr.in/Parkersburg?u&format=1' | awk -F+ '{ print $1,$2 }' | awk '{ print $1\" \"$2 }'",
+        "on-click": "wttr-as-png",
+        "interval": 1800
+    }, 
+
+    "custom/music": {
+        "exec": "~/.config/waybar/scripts/custom-music",
+        "interval": 1,
+        "return-type": "json",
+        "max-length": 40,
+        "on-click": "playerctl -p rhythmbox play-pause",
+        "on-click-right": "playerctl -p rhythmbox next",
+        "on-scroll-up": "playerctl -p rhythmbox volume 0.05+",
+        "on-scroll-down": "playerctl -p rhythmbox volume 0.05-"
+    }
 }

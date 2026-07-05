@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+
+set _dnd (swaync-client -D)
+
+if [ $_dnd = "true" ]
+  echo "󰂛 "(swaync-client -c)
+else
+  echo "󰂚 "(swaync-client -c)
+end

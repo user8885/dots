@@ -40,6 +40,10 @@
       "state": "muted",
       "urgency": "Low",
       "app-name": "cider2"
+    },
+    "rhythmbox": {
+      "state": "ignored",
+      "app-name": "Rhythmbox"
     }
   },
   "widgets": [
@@ -65,7 +69,7 @@
           },
           {
             "label": "   Lock",
-            "command": "swaylock -f --image ~/.config/wallpapers/snow_woods.jpg"
+            "command": "swaylock -l -i ~/.config/wallpaper"
           },
           {
             "label": "   Shut down",
@@ -77,8 +81,8 @@
         "position": "left",
         "actions": [
           {
-            "label": "",
-            "command": "easyeffects"
+              "label": "󰑓",
+              "command": "swaync-client -R; swaync-client -rs"
           },
           {
             "label": "🗑",

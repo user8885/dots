@@ -2,9 +2,10 @@
  * vim: ft=less 
  */
 
+
 @define-color border-color rgb(40, 42, 54);
 @define-color border-color2 rgb(189, 147, 249);
-@define-color bg rgb(40, 42, 54);
+@define-color bg rgba(40, 42, 54, 0.75);
 @define-color bg-hover rgb(68, 71, 90);
 @define-color bg-focus rgb(98, 114, 164);
 @define-color bg-selected rgb(40, 42, 54);

@@ -9,7 +9,7 @@
  *******************************************************************************/
 
 * {
-    font:               "NotoSansM Nerd Font 12";
+    font:               "Noto Sans Regular 12";
     background-color:   @bg;
     text-color:         @fg;
     margin:             0px;

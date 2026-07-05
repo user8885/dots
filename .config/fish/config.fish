@@ -12,35 +12,32 @@ set -gax XDG_DATA_DIRS /var/lib/flatpak/exports/share:$HOME/.local/share/flatpak
 set -gx _JAVA_OPTIONS -Djava.util.prefs.userRoot="$XDG_CONFIG_HOME"/java
 set -gx GTK2_RC_FILES $XDG_CONFIG_HOME/gtk-2.0/gtkrc
 set -gx GNUPGHOME $XDG_DATA_HOME/gnupg
-set -gx HISTFILE $XDG_STATE_HOME/bash/history
 
 set -gx MY_TERM kitty
 set -gx EDITOR nvim
 
-set -g fish_greeting
-
 if status is-interactive
 
-    if test -d (brew --prefix)/share/fish/completions
-        set -p fish_complete_path (brew --prefix)/share/fish/completions
+    if test -e (whereis starship | awk '{ print $2 }')
+        starship init fish | source
+    end
+
+    function fish_greeting
+        #if test -e (whereis colorscript | awk '{ print $2 }')
+        #    colorscript random
+        #end
+
+        if test -e (whereis fastfetch | awk '{ print $2 }')
+            fastfetch
+        end
     end
 
     # Commands to run in interactive sessions can go here
     set -g fish_key_bindings fish_vi_key_bindings
-    zoxide init fish | source
-    starship init fish | source
-    colorscript random
 
-    alias lua_hw="cd ~/Projects/lua/hello_world/"
-    alias py_hw="cd ~/Projects/python/hello_world/"
-    alias dev=MY_TERM &
-
-    # nixos
-    alias nixresw="pushd ~/nix && git add -A && sudo nixos-rebuild switch --flake ~/nix/ && popd"
-    alias nixrebo="pushd ~/nix && git add -A && sudo nixos-rebuild boot --flake ~/nix/ && popd"
-    alias hore="pushd ~/nix && git add -A && home-manager switch --flake ~/nix/ && popd"
-    alias allre="nixresw && hore"
-    alias allrebo="nixrebo && hore"
+    if test -d (brew --prefix)/share/fish/completions
+        set -p fish_complete_path (brew --prefix)/share/fish/completions
+    end
 
     alias xway="env -u WAYLAND_DISPLAY"
 
@@ -58,28 +55,33 @@ if status is-interactive
     #Lazy alias
     alias grep='grep --color=auto'
     alias hg="history | grep"
-    alias conf='source ~/.bashrc'
+    alias conf="source ~/.config/fish/config.fish"
     alias c="clear"
-    alias n="c && colorscript random"
-    alias ff="c && fastfetch"
-    alias fu="c && uwufetch"
+    alias n="clear; colorscript random"
+    alias ff="clear; fastfetch"
+    alias fu="clear; uwufetch"
     alias wttr="curl wttr.in/Parkersburg?u"
     alias mk="rm config.h && make && sudo make install"
     alias config="/usr/bin/git --git-dir=$HOME/Downloads/git/dots --work-tree=$HOME"
 
     alias cp='cp -i'
     alias rm='rm -i'
-    alias r='trash-put'
 
+    if test -e (whereis zoxide | awk '{ print $2 }')
+        zoxide init fish | source
+        alias cd="z"
+        alias cdi="zi"
+    end
+    alias ..='cd ..'
+    alias ...='cd ../..'
+    alias .3='cd ../../..'
+    alias .4='cd ../../../..'
+    alias .5='cd ../../../../..'
+    alias .6='cd ../../../../../..'
 
-    alias ..='z ..'
-    alias ...='z ../..'
-    alias .3='z ../../..'
-    alias .4='z ../../../..'
-    alias .5='z ../../../../..'
-    alias .6='z ../../../../../..'
-
-    alias ls="eza --group-directories-first"
+    if test -e (whereis eza | awk '{ print $2 }')
+        alias ls="eza --group-directories-first"
+    end
     alias ll="ls -Ahl"
     alias l="ls -lh"
     alias l.='ls -A | grep -E "^\."'
@@ -88,14 +90,14 @@ if status is-interactive
     # Arch linux things
     alias pa='paru'
     alias pas='paru -S'
-    ##
+
     alias p='sudo pacman'
     alias ps='sudo pacman -S'
     alias pq='pacman -Q'
     alias pr='sudo pacman -Rns --unneeded'
-    ##
+
     alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
     alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages (DANGEROUS!)
-    ##
+
     alias pacmirror="sudo reflector --country us --fastest 10 --latest 20 --protocol 'https' --verbose --save /etc/pacman.d/mirrorlist"
 end

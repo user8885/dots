@@ -1,12 +1,12 @@
-#!/usr/bin/env bash
+#!/usr/bin/env fish
 
-/usr/lib/xdg-desktop-portal-wlr &
-/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/libexec/xdg-desktop-portal-wlr &
+/usr/libexec/polkit-mate-authentication-agent-1 &
 
-wlsunset.sh &
+#wlsunset.sh &
 swaybg -i ~/.config/wallpaper &
  
-swaync &
+#swaync &
 swayosd-server &
  
 waybar &
@@ -14,7 +14,7 @@ waybar &
 sleep 2
  
 keepassxc &
-mullvad-vpn &
+/opt/Mullvad\ VPN/mullvad-gui &
 nm-applet &
 blueman-applet &
 steam -silent &

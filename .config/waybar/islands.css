@@ -16,49 +16,57 @@
 @define-color c7      rgb(255, 121, 198);
 
 * {
-    font-family:   "NotoSans Nerd Font";
+    font-family: "NotoSans Nerd Font";
     font-size:     15px;
     box-shadow:    none;
     text-shadow:   none;
     transition-duration: 0s;
-
-    margin: 1 0 1 0;
-    padding: 1px 5px;
 }
 
 window#waybar {
-    background: @bg;
-    
-    /* 
-    border-bottom: 1px solid @c6; 
-     */
+    background: transparent;
 }
 
 tooltip {
     background: @bg-alt;
-    border: 1px solid @c6;
+    border-top: 3px solid @hover;
     border-radius: 8px;
+}
+
+.modules-left {
+    margin: 8 0 4 7;
+}
+.modules-center {
+    margin: 8 0 4 0;
+}
+.modules-right {
+    margin: 8 7 4 0;
 }
 
 #window {
     color: @c6;
     padding: 3px 12px;
+    background: @bg;
+    border: 2px solid @c6;
+    border-radius: 18px;
 }
 
 #workspaces {
     padding: 3px 12px;
     background: @bg;
+    border: 2px solid @c7;
+    border-radius: 18px;
 }
 
 #workspaces button {
     padding: 0 3px;
-    color: @fg;
+    color:      @fg;
 }
 
-#workspaces button.focused, button.active {
+#workspaces button.active {
     background: @hover;
-    border-bottom: 2px solid @c7;
-    border-radius: 2px;
+    border-bottom: 4px solid @c7;
+    border-radius: 4px;
 }
 
 #workspaces button:hover {
@@ -66,7 +74,7 @@ tooltip {
 }
 
 #workspaces button.urgent {
-    border-bottom: 2px solid @c1;
+    color:      @c1;
 }
 
 /*
@@ -82,6 +90,10 @@ min-width:  25px;
 
 #clock {
     color: @c6;
+    padding: 3px 12px;
+    background: @bg;
+    border: 2px solid @c6;
+    border-radius: 18px;
 }
 
 #idle_inhibitor {
@@ -90,6 +102,10 @@ min-width:  25px;
 
 #pulseaudio {
     color: @c4;
+    padding: 3px 12px;
+    background: @bg;
+    border: 2px solid @c4;
+    border-radius: 18px;
 }
 
 #cpu {
@@ -131,15 +147,23 @@ min-width:  25px;
     color: @c5;
     font-size: 20px;
     padding-right: 3px;
+    padding: 3px 12px;
+    background: @bg;
+    border: 2px solid @c5;
+    border-radius: 18px;
 }
 
-#custom-hyprversion, #custom-swayversion {
+#custom-hyprversion {
     color: @c5;
+    padding: 3px 12px;
+    background: @bg;
+    border: 2px solid @c5;
+    border-radius: 18px;
 }
 
 #custom-seperator {
-    color: @com;
-    padding: 0 3px;
+    color: transparent;
+    padding: 0 6px;
 }
 
 #custom-updates {
@@ -149,10 +173,18 @@ min-width:  25px;
 }
 
 #tray {
+    padding: 3px 12px;
+    background: @bg;
+    border: 2px solid @fg;
+    border-radius: 18px;
 }
 
 #custom-swaync {
     color: @c3;
+    padding: 3px 12px;
+    background: @bg;
+    border: 2px solid @c3;
+    border-radius: 18px;
 }
 
 #custom-spotify {
@@ -161,8 +193,16 @@ min-width:  25px;
 
 #custom-wttr {
     color: @c2;
+    padding: 3px 12px;
+    background: @bg;
+    border: 2px solid @c2;
+    border-radius: 18px;
 }
 
 #custom-music {
     color: @c1;
+    padding: 3px 12px;
+    background: @bg;
+    border: 2px solid @c1;
+    border-radius: 18px;
 }

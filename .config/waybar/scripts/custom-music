@@ -1,0 +1,38 @@
+#!/usr/bin/env fish
+
+set _player rhythmbox
+set _player_name "Rhythmbox"
+
+set _artist (playerctl -ps $_player metadata | \
+    awk ' /artist/ { for (i = 3; i <= NF; i++) print $i } ')
+
+set _title (playerctl -ps $_player metadata | \
+    awk ' /title/ { for (i = 3; i <= NF; i++) print $i } ')
+
+set _album (playerctl -ps $_player metadata | \
+    awk ' /album / { for (i = 3; i <= NF; i++) print $i } ')
+
+set _year (playerctl -ps $_player metadata | \
+    awk ' /contentCreated/ { print $NF } ' | \
+    awk -F- ' {print $1} ')
+
+set _volume (playerctl -ps $_player volume | math -s2)
+
+set _status (playerctl -ps $_player status)
+
+function ret
+    set _tooltip "Album: $_album ($_year)\nVolume: $_volume"
+    set _text "$_icon $_artist - $_title"
+
+    echo '{"text": "'$_text'", "tooltip": "'$_tooltip'"}'
+end
+
+if [ $_status = "Playing" ]
+    set _icon ""
+    ret 
+else if [ $_status = "Paused" ]
+    set _icon "" 
+    ret
+else
+    echo '{"text": " Not Playing", "tooltip": "'$_player_name' might not be running.\nPlease start '$_player_name' to see output."}'
+end

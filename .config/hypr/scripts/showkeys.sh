@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env fish
 
 $MY_TERM -e less ~/.config/hypr/keys.conf
 

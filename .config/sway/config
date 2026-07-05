@@ -4,6 +4,11 @@
 #
 # Read `man 5 sway` for a complete reference.
 
+client.focused #BD93F9 #282A36 #F8F8F2 #FF79C6 #BD93F9 
+client.focused_inactive #44475A #282A36  #6272A4
+client.unfocused #44475A #282A36  #6272A4
+client.urgent #FF5555 #282A36  #F8F8F2
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -14,13 +19,14 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term ghostty
+set $term kitty
 # Your preferred application launcher
-set $menu rofi -show drun
+set $menu rofi-wrapper
 
 ### Output configuration
 #
 
+exec swaymsg allow_tearing yes
 output HDMI-A-1 resolution 1920x1080@100Hz
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 
@@ -79,11 +85,13 @@ input type:keyboard {
     # Reload the configuration file
     bindsym $mod+Control+r reload
 
-    # Exit sway (logs you out of your Wayland session)
+    bindsym $mod+Control+w exec waybar-wrapper 
+
     bindsym $mod+Control+q exec swaymsg exit
 
-    bindsym Mod1+b exec floorp
-    bindsym Mod1+m exec flatpak run com.spotify.Client
+    bindsym Mod1+m exec /opt/Mullvad\ VPN/mullvad-gui
+    bindsym Mod1+r exec rhythmbox
+    bindsym Mod1+b exec brave-browser
     bindsym Mod1+k exec keepassxc
     bindsym Mod1+y exec $term -e yazi
     bindsym Mod1+p exec $term -e pulsemixer
