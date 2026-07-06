@@ -210,6 +210,9 @@
 .topbar-buttons > button:hover {
   background-color: @border-color2;
 }
+.topbar-buttons > button.toggle:checked {
+    background-color: @border-color2;
+}
 
 .widget-mpris-player {
   border: 1px solid @border-color2;

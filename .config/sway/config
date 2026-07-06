@@ -9,6 +9,8 @@ client.focused_inactive #44475A #282A36  #6272A4
 client.unfocused #44475A #282A36  #6272A4
 client.urgent #FF5555 #282A36  #F8F8F2
 
+font NotoSans Nerd Font 10
+
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
@@ -18,10 +20,9 @@ set $left h
 set $down j
 set $up k
 set $right l
-# Your preferred terminal emulator
+
 set $term kitty
-# Your preferred application launcher
-set $menu rofi-wrapper
+set $menu fish -c rofi-wrapper
 
 ### Output configuration
 #
@@ -33,14 +34,11 @@ output HDMI-A-1 resolution 1920x1080@100Hz
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 #output * bg ~/.config/wallpaper fill
 
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
-#          before-sleep 'swaylock -f -c 000000'
+exec swayidle -w \
+         timeout 300 'swaylock -f -l -i ~/.config/wallpaper' \
+         timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+         before-sleep 'swaylock -f -l -i ~/.config/wallpaper'
+
 #
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
@@ -85,15 +83,16 @@ input type:keyboard {
     # Reload the configuration file
     bindsym $mod+Control+r reload
 
-    bindsym $mod+Control+w exec waybar-wrapper 
+    bindsym $mod+Control+w exec fish -c waybar-wrapper 
 
     bindsym $mod+Control+q exec swaymsg exit
 
     bindsym Mod1+m exec /opt/Mullvad\ VPN/mullvad-gui
+    bindsym Mod1+q exec qbittorrent
     bindsym Mod1+r exec rhythmbox
+    bindsym Mod1+e exec thunar
     bindsym Mod1+b exec brave-browser
     bindsym Mod1+k exec keepassxc
-    bindsym Mod1+y exec $term -e yazi
     bindsym Mod1+p exec $term -e pulsemixer
     bindsym Mod1+s exec steam
 

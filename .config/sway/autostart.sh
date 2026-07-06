@@ -19,3 +19,6 @@ nm-applet &
 blueman-applet &
 steam -silent &
 qbittorrent &
+
+disown
+exit

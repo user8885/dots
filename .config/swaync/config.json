@@ -1,95 +1,101 @@
 {
-  "$schema": "/etc/xdg/swaync/configSchema.json",
-  "positionX": "right",
-  "positionY": "top",
-  "layer": "top",
-  "control-center-layer": "top",
-  "timeout": 10,
-  "timeout-low": 5,
-  "timeout-critical": 0,
-  "notification-window-width": 400,
-  "keyboard-shortcuts": true,
-  "image-visibility": "always",
-  "transition-time": 200,
-  "hide-on-clear": true,
-  "hide-on-action": true,
-  "control-center-margin-top": 10,
-  "control-center-margin-bottom": 10,
-  "control-center-margin-right": 10,
-  "control-center-margin-left": 0,
-  "control-center-width": 600,
-  "control-center-height": 600,
-  "notification-window-width": 500,
-  "notification-visibility": {
-    "Cider": {
-      "state": "muted",
-      "urgency": "Low",
-      "app-name": "Cider"
+    "$schema": "/etc/xdg/swaync/configSchema.json",
+    "positionX": "right",
+    "positionY": "top",
+    "layer": "top",
+    "control-center-layer": "top",
+    "timeout": 10,
+    "timeout-low": 5,
+    "timeout-critical": 0,
+    "notification-window-width": 400,
+    "keyboard-shortcuts": true,
+    "image-visibility": "always",
+    "transition-time": 200,
+    "hide-on-clear": true,
+    "hide-on-action": true,
+    "control-center-margin-top": 10,
+    "control-center-margin-bottom": 10,
+    "control-center-margin-right": 10,
+    "control-center-margin-left": 0,
+    "control-center-width": 600,
+    "control-center-height": 600,
+    "notification-window-width": 500,
+    "notification-visibility": {
+        "Cider": {
+            "state": "muted",
+            "urgency": "Low",
+            "app-name": "Cider"
+        },
+        "cider": {
+            "state": "muted",
+            "urgency": "Low",
+            "app-name": "cider"
+        },
+        "Cider2": {
+            "state": "muted",
+            "urgency": "Low",
+            "app-name": "Cider2"
+        },
+        "cider2": {
+            "state": "muted",
+            "urgency": "Low",
+            "app-name": "cider2"
+        },
+        "rhythmbox": {
+            "state": "ignored",
+            "app-name": "Rhythmbox"
+        }
     },
-    "cider": {
-      "state": "muted",
-      "urgency": "Low",
-      "app-name": "cider"
-    },
-    "Cider2": {
-      "state": "muted",
-      "urgency": "Low",
-      "app-name": "Cider2"
-    },
-    "cider2": {
-      "state": "muted",
-      "urgency": "Low",
-      "app-name": "cider2"
-    },
-    "rhythmbox": {
-      "state": "ignored",
-      "app-name": "Rhythmbox"
+    "widgets": [
+        "menubar",
+        "dnd",
+        "notifications",
+        "mpris"
+    ],
+    "widget-config": {
+        "mpris": {
+            "image-size": 96,
+            "image-radius": 12
+        },
+        "menubar": {
+            "label": "Notifications",
+            "menu#power-buttons": {
+                "label": "⏼",
+                "position": "right",
+                "actions": [
+                    {
+                        "label": "   Reboot",
+                        "command": "systemctl reboot"
+                    },
+                    {
+                        "label": "   Lock",
+                        "command": "swaylock -f -l -i ~/.config/wallpaper"
+                    },
+                    {
+                        "label": "   Shut down",
+                        "command": "systemctl poweroff"
+                    }
+                ]
+            },
+            "buttons#topbar-buttons": {
+                "position": "left",
+                "actions": [
+                    {
+                        "label": "",
+                        "type": "toggle",
+                        "command": "[[ $SWAYNC_TOGGLE_STATE == true ]] && ( systemd-inhibit --why='User request via swaync' --what=sleep:handle-lid-switch sh -c 'echo \"$$\" > \"$XDG_RUNTIME_DIR/swaync-idle.pid\"; while true; do sleep 3600; done' ) || kill $(<\"$XDG_RUNTIME_DIR/swaync-idle.pid\")",
+                        "update-command": "sh -c 'kill -0 $(<\"$XDG_RUNTIME_DIR/swaync-idle.pid\") && echo true || echo false'"
+                    },
+                    {
+                        "label": "󰑓",
+                        "command": "swaync-client -R; swaync-client -rs; swaync-client -cp; swaync-client -op"
+                    },
+                    {
+                        "label": "🗑",
+                        "command": "swaync-client -C"
+                    }
+                ]
+            }
+        }
     }
-  },
-  "widgets": [
-    "menubar",
-    "dnd",
-    "notifications",
-    "mpris"
-  ],
-  "widget-config": {
-    "mpris": {
-      "image-size": 96,
-      "image-radius": 12
-    },
-    "menubar": {
-      "label": "Notifications",
-      "menu#power-buttons": {
-        "label": "⏼",
-        "position": "right",
-        "actions": [
-          {
-            "label": "   Reboot",
-            "command": "systemctl reboot"
-          },
-          {
-            "label": "   Lock",
-            "command": "swaylock -l -i ~/.config/wallpaper"
-          },
-          {
-            "label": "   Shut down",
-            "command": "systemctl poweroff"
-          }
-        ]
-      },
-      "buttons#topbar-buttons": {
-        "position": "left",
-        "actions": [
-          {
-              "label": "󰑓",
-              "command": "swaync-client -R; swaync-client -rs"
-          },
-          {
-            "label": "🗑",
-            "command": "swaync-client -C"
-          }
-        ]
-      }
-    }
-  }
 }
