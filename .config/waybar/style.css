@@ -22,8 +22,8 @@
     text-shadow:   none;
     transition-duration: 0s;
 
-    margin: 1 0 1 0;
-    padding: 1px 5px;
+    margin: 1 0;
+    padding: 0 3px;
 }
 
 window#waybar {

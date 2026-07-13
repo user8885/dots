@@ -1,5 +1,5 @@
 set -gax PATH ~/.local/bin
-set -gax PATH ~/.local/scripts/dm-scripts
+set -gax PATH ~/Projects/scripts/dm-scripts
 set -gax PATH /home/linuxbrew/.linuxbrew/bin
 
 set -gx XDG_DATA_HOME $HOME/.local/share/
@@ -93,18 +93,4 @@ if status is-interactive
     alias l="ls -lh"
     alias l.='ls -A | grep -E "^\."'
     alias la='ls -A'
-
-    # Arch linux things
-    alias pa='paru'
-    alias pas='paru -S'
-
-    alias p='sudo pacman'
-    alias ps='sudo pacman -S'
-    alias pq='pacman -Q'
-    alias pr='sudo pacman -Rns --unneeded'
-
-    alias unlock='sudo rm /var/lib/pacman/db.lck'    # remove pacman lock
-    alias cleanup='sudo pacman -Rns $(pacman -Qtdq)' # remove orphaned packages (DANGEROUS!)
-
-    alias pacmirror="sudo reflector --country us --fastest 10 --latest 20 --protocol 'https' --verbose --save /etc/pacman.d/mirrorlist"
 end

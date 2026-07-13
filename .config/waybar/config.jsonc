@@ -8,11 +8,11 @@
 
     // Choose the order of the modules
     "modules-left": [
-        "custom/swayversion",
+        "custom/hyprversion",
         "custom/seperator",
-        "sway/workspaces",
+        "hyprland/workspaces",
         "custom/seperator",
-        "sway/window"
+        "hyprland/window"
     ],
     "modules-center": [
         "tray"

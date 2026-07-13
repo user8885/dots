@@ -5,7 +5,7 @@
 
 @define-color border-color rgb(40, 42, 54);
 @define-color border-color2 rgb(189, 147, 249);
-@define-color bg rgba(40, 42, 54, 0.75);
+@define-color bg rgba(40, 42, 54, 0.95);
 @define-color bg-hover rgb(68, 71, 90);
 @define-color bg-focus rgb(98, 114, 164);
 @define-color bg-selected rgb(40, 42, 54);
@@ -53,10 +53,13 @@
 .time {
   margin-right: 5px;
 }
-/*.close-button:hover {
+
+/*
+.close-button:hover {
   background: @bg-red-bright;
   transition: all 0.15s ease-in-out;
-}*/
+}
+*/
 
 .notification-default-action,
 .notification-action {

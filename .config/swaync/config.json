@@ -83,8 +83,8 @@
                     {
                         "label": "",
                         "type": "toggle",
-                        "command": "[[ $SWAYNC_TOGGLE_STATE == true ]] && ( systemd-inhibit --why='User request via swaync' --what=sleep:handle-lid-switch sh -c 'echo \"$$\" > \"$XDG_RUNTIME_DIR/swaync-idle.pid\"; while true; do sleep 3600; done' ) || kill $(<\"$XDG_RUNTIME_DIR/swaync-idle.pid\")",
-                        "update-command": "sh -c 'kill -0 $(<\"$XDG_RUNTIME_DIR/swaync-idle.pid\") && echo true || echo false'"
+                        "command": "[[ $SWAYNC_TOGGLE_STATE == true ]] && ( systemd-inhibit --why='User request via swaync' --what=idle:sleep:handle-lid-switch sh -c 'echo \"$$\" > \"$XDG_RUNTIME_DIR/swaync-idle.pid\"; while true; do sleep 3600; done' ) || kill $(<\"$XDG_RUNTIME_DIR/swaync-idle.pid\")",
+                        "update-command": "kill -0 $(<\"$XDG_RUNTIME_DIR/swaync-idle.pid\") && echo true || echo false"
                     },
                     {
                         "label": "󰑓",
