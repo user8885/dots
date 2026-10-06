@@ -7,7 +7,11 @@ waybar &
 
 keepassxc &
 /opt/Mullvad\ VPN/mullvad-gui &
+tailscale systray &
 nm-applet &
 blueman-applet &
 steam -silent &
 qbittorrent &
+
+disown (jobs -p)
+exit

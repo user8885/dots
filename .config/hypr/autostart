@@ -4,21 +4,22 @@ xwaylandvideobridge --qwindowtitle xwlvb &
 /usr/libexec/xdg-desktop-portal-hyprland &
 /usr/libexec/polkit-mate-authentication-agent-1 &
 
-#wlsunset-wrapper &
+waybar &
 
 swaybg -i ~/.config/wallpaper &
-waybar &
 swaync &
 swayosd-server &
+swayidle-wrapper &
+wlsunset-wrapper &
 
 sleep 2
 
-"/opt/Mullvad VPN/mullvad-vpn" &
+/opt/Mullvad\ VPN/mullvad-vpn &
 keepassxc &
-#nm-applet &
-#blueman-applet &
+nm-applet &
+blueman-applet &
 steam -silent &
 qbittorrent &
 
-disown
+disown (jobs -p)
 exit

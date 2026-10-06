@@ -1,6 +1,3 @@
-include /etc/sway/config.d/*
-include ~/.config/sway/config.d/*
-
 # Read `man 5 sway` for a complete reference.
 
 client.focused #BD93F9 #282A36 #F8F8F2 #FF79C6 #BD93F9 
@@ -10,21 +7,15 @@ client.urgent #FF5555 #282A36  #F8F8F2
 
 font NotoSans Nerd Font 10
 
-### Output configuration
-#
-
-exec swaymsg allow_tearing yes
-output HDMI-A-1 resolution 1920x1080@100Hz
 # You can get the names of your outputs by running: swaymsg -t get_outputs
-
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
+output HDMI-A-1 resolution 1920x1080@100Hz
 output * {
     bg ~/.config/wallpaper fill
     allow_tearing yes
     max_render_time off
 }
 
-exec fish -c swayidle-wrapper
+#exec fish -c swayidle-wrapper
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -43,4 +34,6 @@ input type:keyboard {
     xkb_options "caps:swapescape"
 }
 
-exec ~/.config/sway/autostart.sh
+include /etc/sway/config.d/*
+include ~/.config/sway/config.d/*
+exec ~/.config/sway/autostart
